@@ -2,29 +2,23 @@ import sys
 input = sys.stdin.readline
 
 k, n = map(int, input().split())
-length = [int(input()) for _ in range(k)]
-base = min(length)
-div, count = 0, 0
+lan = []
 
-while count <= n:
-    div += 1
-    tmp = base // div
-    count = 0
-    for i in length:
-        count += i // tmp
+for _ in range(k):
+    lan.append(int(input()))
 
-base1, base2 = None, None
-if div == 1:
-    dase1, base2 = base, base
-else:
-    base1, base2 = base // div, base // (div-1)
+maxLen = sum(lan) // n
+minLen = 1
 
+while minLen <= maxLen:
+    midLen = (minLen + maxLen) // 2
+    result = 0
+    for i in lan:
+        result += i // midLen
+    
+    if result >= n:
+        minLen = midLen + 1
+    elif result < n:
+        maxLen = midLen - 1
 
-for i in range(base2, base1-1, -1):
-    count = 0
-    for j in length:
-        count += j // i
-    if count >= n:
-        print(i)
-        break
-
+print(minLen - 1)
