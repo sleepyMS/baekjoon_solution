@@ -10,12 +10,11 @@ def DFS(net, start=1):
         tmp = stack.pop()
         if tmp in net:
             for i in net[tmp]:
-                if i not in result:
+                if i not in result and i != 1:
                     stack.append(i)
                     result.add(i)
 
-    
-    return len(result.remove(1))
+    return len(result)
 
 if __name__ == "__main__":
     n = int(input())
