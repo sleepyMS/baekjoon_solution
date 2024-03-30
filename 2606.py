@@ -1,8 +1,36 @@
 import sys
 input = sys.stdin.readline
 
-n = int(input())
-net = [[0] * n for _ in range(n)]
-for _ in range(int(input())):
-    a, b = map(int, input().split())
-    net[a-1][b-1], net[b-1][a-1] = 1, 1
+
+def DFS(net, start=1):
+    stack = [start]
+    result = set()
+
+    while stack:
+        tmp = stack.pop()
+        if tmp in net:
+            for i in net[tmp]:
+                if i not in result:
+                    stack.append(i)
+                    result.add(i)
+
+    
+    return len(result.remove(1))
+
+if __name__ == "__main__":
+    n = int(input())
+    net = {}
+    for _ in range(int(input())):
+        a, b = map(int, input().split())
+         
+        if a in net:
+            net[a].add(b)
+        else:
+            net[a] = set([b])
+        if b in net:
+            net[b].add(a)
+        else:
+            net[b] = set([a])
+
+    print(DFS(net))
+
