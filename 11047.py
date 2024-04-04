@@ -1,18 +1,18 @@
-import sys
-input = sys.stdin.readline
+# import sys
+# input = sys.stdin.readline
 
-n, k = map(int, input().split())
-arr = [int(input()) for _ in range(n)]
-cnt, s = 0, 0
+# n, k = map(int, input().split())
+# arr = [int(input()) for _ in range(n)]
+# cnt, s = 0, 0
 
-while s < k:
-    coin = arr.pop()
-    if s + coin <= k:
-        tmp = (k-s) // coin
-        s += coin * tmp
-        cnt += tmp
-        
-print(cnt)
+# while s < k:
+#     coin = arr.pop()
+#     if s + coin <= k:
+#         tmp = (k-s) // coin
+#         s += coin * tmp
+#         cnt += tmp
+
+# print(cnt)
 
 
 # 10 15              
