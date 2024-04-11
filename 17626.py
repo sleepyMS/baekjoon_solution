@@ -1,28 +1,17 @@
 n = int(input())
-m = [0] * (n + 1)
-m[1], m[2], m[3] = 1, 2, 3
-for i in range(int(n**(1/2)) + 1):
-    m[i**2] = 1
-    for j, k in enumerate(range(i**2, n)):
-        pass
+squares = set([i**2 for i in range(1, int(n**0.5)+1)])
+result = 4
 
+for i in range(1, int(n**0.5) + 1): 
+    for j in range(1, int((n - i**2)**0.5) + 1):
+        if (n - i*i - j*j) in squares:
+            result = 3
+            
+for i in range(1, int(n**0.5) + 1):
+    if (n-i**2) in squares:
+        result = 2
+        
+if n in squares or n == 1:
+    result = 1
 
-for i in range(n+1):
-    pass
-
-
-# i = int(n**(1/2))
-# result = 0
-# while n != 0:
-#     if n >= i**2:
-#         n -= i**2
-#         result += 1
-#         print(n, i)
-
-#     if n < 4:
-#         result += n
-#         break
-#     else:
-#         i -= 1
-
-# print(result)
+print(result)
