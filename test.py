@@ -1,16 +1,38 @@
+from queue import deque
 import sys
 input = sys.stdin.readline
 
-n, m = map(int, input().split())
 
-arr = list(map(int, input().split()))
-max = -1
-# nums = []
-for i in range(0, n):
-    for j in range(i+1, n):
-        for k in range(j+1, n):
-            num = arr[i]+arr[j]+arr[k]
-            if num > max and m >= num:
-                max = num
+def BFS(a, b):
+    visited = set()
+    que = deque([(a, '')])
+    while que:
+        tmp, tmp2 = que.popleft()
+        for c in ['D', 'S', 'L', 'R']:
+            m = 0
+            if c == 'D':
+                m = (tmp*2) % 10000
+            elif c == 'S':
+                m = tmp-1 if tmp - 1 else 9999
+            elif c == 'L':
+                m = (tmp % 1000) * 10 + (tmp // 1000)
+            elif c == 'R':
+                n = tmp % 10
+                m = (tmp // 10) + 1000 * (tmp % 10)
+            
+            if m not in visited:
+                que.append((m, tmp2 + c))
+                if m == b:
+                    return tmp2 + c
+                
+        visited.add(tmp)
 
-print(max)
+
+if __name__ == "__main__":
+    for _ in range(int(input())):
+        a, b = map(int, input().split())
+        if a == b:
+            print()
+        else:
+            c = BFS(a, b)
+            print(''.join(c))
