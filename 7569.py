@@ -11,7 +11,6 @@ def BFS(graph):
         return 0
     
     que = deque([t for t, i in after.items() if graph[t[0]][t[1]][t[2]] == 1])
-    
     while que:
         x, y, z = que.popleft()
         
@@ -32,3 +31,4 @@ if __name__ == "__main__":
     m, n, h = map(int, input().split())
     graph = [[list(map(int, input().split())) for _ in range(n)] for _ in range(h)]
     print(BFS(graph))
+    
