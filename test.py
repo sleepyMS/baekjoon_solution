@@ -1,13 +1,3 @@
-pattern = 'ABAABAB'
+a = "Research using artificial intelligence to predict cryptocurrency prices through various auxiliary indicators, such as news articles or economic indicators, has been published. This study proposes a system to improve the profitability of futures trading by using only the target cryptocurrency's price indicators. By leveraging the characteristics of futures trading, high and low price data, instead of simple closing price data, were used to train the artificial intelligence. In this process, LSTM, which compensates for the long-term dependency problem of RNN and handles more complex time series data, was used to predict trends. The proposed system improved the profitability of futures trading and showed practical potential for predicting cryptocurrency price trends. Specifically, the proposed model, while having slightly lower Pearson correlation coefficients and win rates compared to the closing price-based model, achieved significant improvements in profitability: 6.27% for ETH, 32.71% for XRP, and 45.96% for DOGE. These results confirm that using high and low price data can lead to meaningful performance improvements in cryptocurrency futures trading."
 
-# KMP를 위한 table 만들기
-pattern_table = [0] * (len(pattern))
-j = 0
-for i in range(1,len(pattern_table)):
-    while j > 0 and pattern[i] != pattern[j]:
-        j = pattern_table[j-1]
-    if pattern[i] == pattern[j]:
-        j += 1
-        pattern_table[i] = j
-    
-print(pattern_table)
+print(len(a.split()))

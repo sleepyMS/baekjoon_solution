@@ -2,12 +2,10 @@ import sys
 from collections import deque
 input = sys.stdin.readline
 
-
 def bfs(a, b):
     global graph, road
     que = deque()
     que.append((a, b))
-
     while que:
         current = que.popleft()
         
@@ -20,10 +18,7 @@ def bfs(a, b):
 
     return graph[n-1][m-1]
 
-
 n, m = map(int, input().split())
-
 graph = [list(map(int, input().rstrip())) for _ in range(n)]
 road = [(-1,0),(1,0),(0,-1),(0,1)]
-
 print(bfs(0, 0))

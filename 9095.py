@@ -1,17 +1,19 @@
-import math
 import sys
 input = sys.stdin.readline
 
+nArr = [int(input()) for _ in range(int(input()))]
+dp = [0,1,2,4] + [0]*(max(nArr) - 3)
 
-if __name__ == "__main__":
-    nArr = [int(input()) for _ in range(int(input()))]
-    result = [0,1,2,4] + [0 for _ in range(max(nArr) - 3)]
+for i in range(4, len(dp)):
+    dp[i] = dp[i-1] + dp[i-2] + dp[i-3]
 
-    for i in range(4, len(result)):
-        result[i] = result[i-1] + result[i-2] + result[i-3]
-    
-    for i in nArr:
-        print(result[i])
+for i in nArr:
+    print(dp[i])
+
+
+# import math
+# import sys
+# input = sys.stdin.readline
 
 # # 중복조합 이용
 # def combinationReplace(n, r):

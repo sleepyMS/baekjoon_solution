@@ -1,29 +1,7 @@
-def combination(n, r):
-    if n == r:
-        return 1
-    elif n < r:
-        n, r = r, n
-
-    tmp = 1
-    for i in range(n, n-r, -1):
-        tmp *= i
-
-    print(tmp // r)
-
-    return tmp // r
-
-
 n = int(input())
+dp = [0,1,2] + [0] * (n-1)
+for i in range(3, n+1):
+    dp[i] = dp[i-1] + dp[i-2]
 
-if n == 1:
-    print(1)
-else:
-    m = n // 2
-    result = 1
-    for i in range(1, m+1):
-        print(i, result)
-        result += combination(n - i*2 + 1, i)
+print(dp[n]%10007)
 
-    print(result)
-        
-    
