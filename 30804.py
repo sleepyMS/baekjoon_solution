@@ -17,7 +17,7 @@
 #         else:
 #             break
         
-# print(result) 교1팀 오윤경 선생님 부재중
+# print(result)
 
 
 n = int(input())
